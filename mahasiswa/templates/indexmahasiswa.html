@@ -7,7 +7,25 @@
     <h1 style= "font-family: Georgia, 'Times New Roman', Times, serif;">MAHASISWA PENDIDIKAN MATEMATIKA</h1>
     
     </center>
-    <br>
+    <h3>Tambah Mahasiswa</h3>
+    
+   <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if pesan %}
+            <div class="alert alert-succes">{{ pesan }}</div>
+            {% endif %}
+            <form action="/tambah-mahasiswa/" method="post">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-primary">Tambah Mahasiswa</button>
+
+            </form>
+        </div>
+    </div>
+
     
     
     <center>
@@ -20,12 +38,13 @@
             <th>Tempat, Tanggal Lahir</th>
             <th>Email</th>
             <th>Foto</th>
+            <th>Action</th>
         </tr>
         
             {% for mahasiswa in student %}
             <tr style="background-color: rgba(113, 149, 247, 0.568);">
                 <td><center>{{mahasiswa.no}}</td></center>
-                <td>{{mahasiswa.nama}}</td>
+                <td><a href="{% url 'ubah_mahasiswa' mahasiswa.id %}">{{ mahasiswa.nama }}</a></td>
                 <td>{{mahasiswa.nim}}</td>
                 <td>{{mahasiswa.ttl}}</td>
                 <td>{{mahasiswa.email}}</td>
@@ -34,7 +53,17 @@
                     <img src="{{ mahasiswa.foto.url }}" width="60px">
                     {% endif %}
                 </td>
-    
+                <td> 
+                    <a href="{% url 'hapus_mahasiswa' mahasiswa.id %}" class="btn btn-danger">Hapus</a>
+
+                </td>
+                
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
     
             </tr>
             {% endfor %}

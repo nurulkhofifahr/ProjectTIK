@@ -1,0 +1,78 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<h3>TAMBAH MAHASISWA</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if pesan %}
+            <div class="alert alert-succes">{{ pesan }}</div>
+            {% endif %}
+            <form action="/tambah-mahasiswa/" method="post">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-primary">Tambah Mahasiswa</button>
+                <a href="/mahasiswa" class="btn btn-danger">Kembali</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+      background-image: linear-gradient(to right, #fd7afd, #478eff);
+      margin-left: 50px;
+      margin-right: 50px;
+      padding: 0;
+  }
+  
+  nav {
+      top: 0;
+      left: 0;
+      position: fixed;
+      height: 80px;
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid white;
+  }
+  
+  .logo {
+      float: left;
+      height: 10px;
+      font-size: 36px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: white;
+      padding: 20px 20px;
+      justify-content: space-around;
+  }
+  
+  nav ul {
+      margin: 0;
+      padding: 0;
+      float: right;
+      list-style: none;
+      display: flex;
+  }
+  
+  nav ul li a {
+      font-size: 15px;
+      font-weight: bold;
+      color: white;
+      line-height: 80px;
+      text-decoration: none;
+      padding: 12px 30px;
+  }
+  nav ul li a:hover {
+border-radius: 10px;
+background: rgba(0, 0, 0, 0.8);
+}
+</style>
+
+
+
+{% endblock %}

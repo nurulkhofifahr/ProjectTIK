@@ -29,7 +29,7 @@ from pascasarjana.views import prodi8
 from profil.views import profil
 from universitas.views import universitas 
 from dosen.views import dosen
-from mahasiswa.views import mahasiswa
+from mahasiswa.views import mahasiswa, tambah_mahasiswa, ubah_mahasiswa, hapus_mahasiswa
 from tendik.views import tendik
 
 
@@ -50,6 +50,9 @@ urlpatterns = [
     path('dosen/', dosen),
     path('mahasiswa/', mahasiswa),
     path('tendik/', tendik),
+    path('tambah-mahasiswa/', tambah_mahasiswa), 
+    path('mahasiswa/ubah/<int:id_mahasiswa>', ubah_mahasiswa, name='ubah_mahasiswa'),
+    path('mahasiswa/hapus/<int:id_mahasiswa>', hapus_mahasiswa, name='hapus_mahasiswa'),
     
 
     
